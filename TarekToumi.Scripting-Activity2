@@ -1,0 +1,8 @@
+#!/bin/bash
+
+date=`date +%Y.%m.%d`
+for f in ~/c237TT/testFilesD/testF*
+do 
+	mv -- "$f" "${f%}$date"
+done
+
