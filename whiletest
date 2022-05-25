@@ -3,18 +3,19 @@
         read a
 	echo "Please write parameter b";
 	read b
+
+	count=0
+	while [ $count -lt '3' ]
+	do
 	if  ! echo $a | grep [0-999] > null &&
-	   !  echo $b | grep [0-99]  > null
+	   !  echo $b | grep [0-999]  > null
 	then 
-	echo "Please write a number between 0 and 99" ;	
-	echo "Write a" ;read a
+	echo "Please write a number between 0 and 999" ;	     echo "Write a" ;read a
 	echo "write b" ;read b
-	fi
-	if  ! echo $a | grep [0-999] > null &&
-           !  echo $b | grep [0-99]  > null
-	then echo "Sorry you did not respect the instructions";
+	count=$((count+1))
 	else 
 	output="$a-$b"
 	echos=$(echo $output | bc)
 	echo "The Difference is " $echos;
 	fi
+done
