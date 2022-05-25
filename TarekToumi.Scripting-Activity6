@@ -1,0 +1,11 @@
+#!/bin/bash
+        echo "Please write parameter a";
+        read a;
+        echo "Please write parameter b";
+        read b;
+        if [ $a -lt $b ]
+        then
+                echo "True";
+        else
+                echo "False";
+fi

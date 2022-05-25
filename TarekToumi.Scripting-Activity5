@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "Please enter a number"
+read input
+echo "The reverse of the number you entered is "
+echo $input | rev

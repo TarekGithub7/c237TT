@@ -1,0 +1,21 @@
+#!/bin/bash
+        echo "Please write parameter a";
+        read a
+	echo " Please write parameter b";
+	read b
+	if  ! echo $a | grep [0-999] > null &&
+	   !  echo $b | grep [0-99]  > null
+	then 
+	echo "Please write a number between 0 and 99" ;	
+	read a
+	read b
+	fi
+	if  ! echo $a | grep [0-999] > null &&
+           !  echo $b | grep [0-99]  > null
+	then "Sorry you did not respect the instructions"	
+	exit 1
+	else 
+	output="$a+$b"
+	echos=$(echo $output | bc)
+	echo "The Difference is " $echos;
+	fi
