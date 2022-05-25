@@ -1,0 +1,20 @@
+#!/bin/bash
+
+	echo "Please enter your password"
+	read pass
+	if [ ${#pass} -lt 8 ] 
+	then
+		echo " Your password should have at least 8 characters";
+	elif   ! echo $pass | grep [a-z] > null
+	then  
+	       	echo " Your password should contain at least one 
+		lowercase letter";
+	elif   ! echo $pass | grep [A-Z] > null
+	then
+		echo " Your pass should contain at least 
+		one uppercase letter";
+	else 
+		echo "Thank you";
+	fi
+
+

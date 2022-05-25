@@ -1,0 +1,25 @@
+#!/bin/bash
+
+
+	ballNbrBonus=0
+	date=`date +%y.%m.%d`
+	ballNbrBonus=$((($RANDOM%10)+1))
+	draw=5
+	Output=0
+	matches=0
+	echo "Please write your lottery number "
+	read input
+	if [ $input = $draw  ]
+	then 
+		echo "Your number matches the draw number ";
+		matches=$((matches+1));
+		echo " You have " $matches " match(s)";
+	elif [ $input = $ballNbrBonus ]
+	then 
+		echo " Your Number matches the bonus ball number"
+		matches=$((matches+1));
+		echo "You have "$matches " match(s)";
+	else 
+		echo " You have no matches " 
+	fi
+
