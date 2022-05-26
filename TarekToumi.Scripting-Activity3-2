@@ -1,9 +1,0 @@
-#!/bin/bash
-	ballNbrBonus=0
-	date=`date +%y.%m.%d`
-	ballNbrBonus=$((($RANDOM%10)+1))
-	draw=5
-	Output=0
-	OUTPUT="$ballNbrBonus+$draw"
-	echo   $OUTPUT | bc > ~/c237TT/lottery.$date;
-
