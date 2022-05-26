@@ -1,0 +1,10 @@
+Real madrid won the champions league 13 times.+True
+Emmental Cheese origin is France.+False
+Croissant origin is Turkey.+False
+Airbus 320 is a bus line from Paris Bus station to Lyon.+False
+Emmanuel Macaron is the president of France.+False
+French fries origin is Belgium.+True
+Pizza was first invented in Campania, Napoli.+True
+Biggest reserve of Lithium is located in Chile.+False
+Messi is a basketball player.+False
+Tesla car was created by Nikola Tesla.+False
