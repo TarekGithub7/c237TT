@@ -1,0 +1,10 @@
+#!/bin/bash
+error=1
+	echo "Please enter the filename";
+	read filename
+	if   ls | grep $filename > null 
+	then	echo  "Error:The file does  exist " "code="$error 
+	elif ! ls | grep $filename
+	then
+		 touch $filename ~/c237TT
+	fi
