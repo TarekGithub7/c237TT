@@ -1,22 +1,18 @@
 #!/bin/bash
-        echo "Please write parameter a";
-        read a
-	echo "Please write parameter b";
-	read b
-	if  ! echo $a | grep [0-999] > null &&
-	   !  echo $b | grep [0-999]  > null
-	then 
-	echo "Please write a number between 0 and 999" ;	
-	echo "Write a" ;read a
-	echo "write b" ;read b
-	fi
-		if  ! echo $a | grep [0-999] > null &&
-           	!  echo $b | grep [0-999]  > null
-			then 
-			echo "Sorry you did not respect
-	       	the instructions";
-		else
+i=0;
+	while [ $i -eq "0" ]
+	do
+	echo "Write the number a" ;read a
+	echo "write the number b" ;read b
+	if  ! echo $a | grep [0-999] > null || 
+           !  echo $b | grep [0-999]  > null
+        then
+		echo "Please wrtite a number between 0 and 999";
+		i=0	
+	else
 		output="$a-$b"
 		echos=$(echo $output | bc)
+		i=$((i+1))
 		echo "The Difference is " $echos;
 		fi
+	done
