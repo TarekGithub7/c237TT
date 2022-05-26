@@ -3,6 +3,9 @@
 date=`date +%Y.%m.%d`
 for f in ~/c237TT/testFilesD/*
 do 
+	if ! echo $f | grep .sh > null 
+	then
 	mv -- "$f" "${f%}$date"
+	fi
 done
 

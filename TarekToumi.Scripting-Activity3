@@ -1,7 +1,56 @@
 #!/bin/bash
-	ballNbrBonus=0
-	date=`date +%y.%m.%d`
-	ballNbrBonus=$((($RANDOM%10)+1))
-	draw=5
-	Output=0
-	echo "Your Number is " $draw " and the your bonus number ball is " $ballNbrBonus > lotteryNumbers.$date;
+        i=1
+        ipick=1
+        date=`date +%y.%m.%d.%h.%m`
+        ballNbr=0
+        bonusBall=0
+        matches=0
+        array=( )
+        while [ $i -lt '7' ]
+        do
+          if [ $i -lt '6' ]
+          then
+                ballNbr=$((($RANDOM%50)+1))
+                echo $ballNbr >> ~/c237TT/lotteryNbrs.txt.$date;
+                echo "The lucky number" $i "is" $ballNbr;
+                sleep 1
+                i=$((i+1))
+          elif [ $i -eq '6' ]
+                                then
+                                bonusBall=$((($RANDOM%10)+1))
+                                echo $bonusBall >>  ~/c237TT/lotteryNbrs.txt.$date;
+                                echo "The lucky bonus number is "$bonusBall;
+                                i="7";
+
+
+          fi
+        done
+              while [ $ipick -lt '7' ] && [ $i -eq '7' ]
+              do
+                          echo "Provide your number "$ipick "ball";
+                          read userNbr
+                          if [[ $userNbr =~ ^[+-]?[0-9]+$ ]]
+                                  then
+                                  if [ $userNbr -ge 0 ] && [ $userNbr -le 999 ]
+                                          then
+                                            if   cat ~/c237TT/lotteryNbrs.txt.$date | grep ^$userNbr$ > null
+                                            then
+                                            echo "Your number " $userNbr "Match a lottery number";
+                                            ipick=$((ipick+1))
+                                            matches=$((matches+1))
+                                            array+=" "$(echo $userNbr)
+                                            echo "You've got " $matches" matches";
+                                            echo "Yout Matches are " $array;
+                                            else
+                                            echo "Not Matche for Your number "$userNbr;
+                                            echo "Yout Matches are " $array;
+                                            ipick=$((ipick+1))
+                                            fi
+                                  else
+                                  echo "Your number should be between 0 and 999";
+                                  fi
+                          else
+                            echo "please enter a number";
+                          fi
+                 done
+
