@@ -1,42 +1,63 @@
 #!/bin/bash
 repeat=false
 i=1
-array=( )
-	while [ $i -lt "11" ]  
-	do
-		if [ $repeat == "false" ]
-	       	then
-		echo "Please enter the number $i in a range 0 to 999";
-		read nbr
-			if [[ $nbr =~ ^[+-]?[0-9]+$ ]] 
-			then
-				if [ $nbr -ge 0 ] && [ $nbr -le 999 ] 
-				then 
-				i=$((i+1))
-				array+=" "$(echo $nbr)
-				echo $array | awk '{print $i}';
-				echo "My array is " $array;
-				else
-				echo "Please enter a number";
-				fi
-			fi
-		fi
-		if [ $i -eq "6" ] || [ $repeat == "true" ]
-		then
-		echo "Do you want to stop?";
-		read answ
-			if [ $answ == "Yes" ] || [ $answ == "yes" ]
-			then
-			i=11 
-			elif [ $answ == "no" ] || [ $answ == "No" ]
-			then
-			repeat="false"
-			 elif [ $answ != "Yes" ] || [ $answ != "yes" ] ||
+declare -a array
+unset array
+        while [ $i -lt "11" ]
+        do
+                if [ $repeat == "false" ]
+                then
+                echo "Please enter the number $i in a range 0 to 999";
+                read nbr
+                        if [[ $nbr =~ ^[+-]?[0-9]+$ ]]
+                        then
+                                if [ $nbr -ge 0 ] && [ $nbr -le 999 ]
+                                then
+                                i=$((i+1))
+                                array+=($nbr)
+                                echo "My array is " ${array[@]};
+                                fi
+                        else
+                        echo "Please enter a number in a range of 0 to 999";
+                        fi
+                fi
+                if [ $i -eq "6" ] || [ $repeat == "true" ]
+                then
+                echo "Do you want to stop?";
+                read answ
+                        if [ $answ == "Yes" ] || [ $answ == "yes" ]
+                        then
+                        i=11
+                        elif [ $answ == "no" ] || [ $answ == "No" ]
+                        then
+                        repeat="false"
+                        elif [ $answ != "Yes" ] || [ $answ != "yes" ] ||
                         [ $answ != "No" ] || [ $answ != "no" ]
                         then
-                        echo " Please enter Yes or No";
+                        echo "Please enter Yes or No";
                         repeat="true"
-		fi
-		fi
-	done
+                fi
+                fi
+        done
+         sum=1
+         tot=0
+         avg=0
+         ele=0
+         max=0
+        if [ $i -eq "11" ] || [ $i -eq "6" ]
+          then
+            for y in ${array[@]}
+            do
+            ele=$((ele+1))
+            sum=$((sum*$y))
+            max=$(( $y > $max ? $y : $max ))
+            min=$(( $y < $max ? $y : $max ))
+            echo "The total of multiplication is "$sum;
+            tot=$((tot+$y))
+            #avg=$(echo "scale=2;$tot/$ele" | bc 2>/dev/null)
+            avg=$(bc <<< "scale=2; $tot/$ele")
+            echo "The total  is "$tot "and the average is ""$avg" "and the max is "$max "and the min is "$min;
+            echo "The numbers provided are " ${array[@]};
+          done
+          fi
 
