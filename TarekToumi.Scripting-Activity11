@@ -2,9 +2,6 @@
 declare -a array
 unset array
 nbr=-1111111111111
-node=red
-rev=0
-plus=0
 count=$(cat Act11FileNbrs.txt | wc -w)
 
     for ((i=$count; i>=1; i--))
