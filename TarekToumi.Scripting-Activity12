@@ -1,0 +1,39 @@
+#!/bin/bash
+gen1=0
+gen2=0
+declare -a array
+unset array
+gen3=0
+gen4=0
+e1=0
+       echo "----------This script compare two files----------";
+       echo "Please write the name of the first file";
+       read a;
+       echo "Please write the name of the second file";
+       read b;
+       for ((i=1;i<10;i++))
+             do
+              gen1=$(echo $((1 + $RANDOM % 10)))
+              echo $gen1 >> ~/c237TT/$a;
+              gen2=$(echo $((1 + $RANDOM % 10)))
+              echo $gen2 >> ~/c237TT/$b;
+              for ((j=1;j<10;j++))
+                    do
+                    echo "i" $i "j" $j;
+                    gen3=$(cat ~/c237TT/$a  | cut -d " " -f$i | head -n $j | tail -n 1)
+                    gen4=$(cat ~/c237TT/$b  | cut -d " " -f$i | head -n $j | tail -n 1)
+                    if [ $gen1 -eq $gen2 ]
+                        then
+                          nbr=$gen1
+                          array+=" "$nbr;
+                    elif [ $gen3 == $gen4 ]
+                        then
+                          e1=$gen3
+                          array+=" "$e1;
+                    fi
+                    done
+             done
+             echo "Identical Elements are "${array[@]};
+             #rm -f ~/c237TT/$a;
+            #rm -f ~/c237TT/$b;
+
