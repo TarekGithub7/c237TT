@@ -1,0 +1,19 @@
+#!/bin/bash
+declare -a array
+unset array
+nbr=-1111111111111
+node=red
+rev=0
+plus=0
+count=$(cat Act11FileNbrs.txt | wc -w)
+
+    for ((i=$count; i>=1; i--))
+    do
+        if [ $(cat Act11FileNbrs.txt | cut -d " " -f$i) -ne $nbr ]
+        then
+          nbr=$(cat Act11FileNbrs.txt | cut -d " " -f$i)
+          array+=" "$nbr;
+        fi
+    done
+    echo "Numbers are "${array[@]};
+

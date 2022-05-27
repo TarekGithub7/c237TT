@@ -12,14 +12,14 @@
           then
                 ballNbr=$((($RANDOM%50)+1))
                 echo $ballNbr >> ~/c237TT/lotteryNbrs.txt.$date;
-                echo "The lucky number" $i "is" $ballNbr;
+                echo "The lucky number" $i "is *";
                 sleep 1
                 i=$((i+1))
           elif [ $i -eq '6' ]
                                 then
                                 bonusBall=$((($RANDOM%10)+1))
                                 echo $bonusBall >>  ~/c237TT/lotteryNbrs.txt.$date;
-                                echo "The lucky bonus number is "$bonusBall;
+                                echo "The lucky bonus number is *";
                                 i="7";
 
 
@@ -35,15 +35,15 @@
                                           then
                                             if   cat ~/c237TT/lotteryNbrs.txt.$date | grep ^$userNbr$ > null
                                             then
-                                            echo "Your number " $userNbr "Match a lottery number";
+                                            echo "Your number" $userNbr "Match a lottery number";
                                             ipick=$((ipick+1))
                                             matches=$((matches+1))
                                             array+=" "$(echo $userNbr)
                                             echo "You've got " $matches" matches";
-                                            echo "Yout Matches are " $array;
+                                            echo "Your Matches are " $array;
                                             else
-                                            echo "Not Matche for Your number "$userNbr;
-                                            echo "Yout Matches are " $array;
+                                            echo "No Matche for Your number "$userNbr;
+                                            echo "Your Matches are " $array;
                                             ipick=$((ipick+1))
                                             fi
                                   else
