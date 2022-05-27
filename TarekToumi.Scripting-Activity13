@@ -1,0 +1,60 @@
+#!/bin/bash
+gen1=0
+gen2=0
+declare -a array
+unset array
+declare -a array2
+unset array2
+declare -a array3
+unset array3
+declare -a array4
+unset array4
+gen3=0
+gen4=0
+genp=0
+genp2=0
+       echo "----------This script compare two files----------";
+       echo "Please write the name of the first file";
+       read a;
+       echo "Please write the name of the second file";
+       read b;
+       for ((i=1;i<10;i++))
+              do
+              gen1=$(echo $((1 + $RANDOM % 10)))
+              gen2=$(echo $((1 + $RANDOM % 10)))
+              if [ $gen1 -ne $genp ]
+              then
+                  genp=$gen1
+                  echo $gen1 >> ~/c237TT/$a;
+                  gen3=$(cat ~/c237TT/$a  | cut -d " " -f$i | head -n $i | tail -n 1)
+                  array+=" "$gen3;
+              fi
+              if [ $gen2 -ne $genp2 ]
+              then
+                  genp2=$gen2
+                  echo $gen2 >> ~/c237TT/$b;
+                  gen4=$(cat ~/c237TT/$b  | cut -d " " -f$i | head -n $i | tail -n 1)
+                  array2+=" "$gen4;
+              fi
+              done
+              for f in $array
+              do
+                  if [[ ! " ${array2[*]} " =~ " $f " ]]; then
+                  # whatever you want to do when array contains value
+                   array3+=" "$f
+                  fi
+              done
+              for j in $array2
+              do
+                  if [[ ! " ${array[*]} " =~ " $j " ]]; then
+                  # whatever you want to do when array contains value
+                   array4+=" "$j
+                  fi
+              done
+                echo "array1 "${array[@]};
+            echo "array2 "${array2[@]};
+            echo "Unique Elements for file1 are "${array3[@]};
+            echo "Unique Elements for file2 are "${array4[@]};
+            #  rm -f ~/c237TT/$a;
+            #  rm -f ~/c237TT/$b;
+
