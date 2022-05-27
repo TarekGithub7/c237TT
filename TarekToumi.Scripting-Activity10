@@ -1,0 +1,18 @@
+
+#!/bin/bash
+i=1
+ballNbrs=0
+                if  ! ls | grep $1
+                then
+                    while [ $i -le $2 ]
+                    do
+                    i=$((i+1))
+                    ballNbrs=$((($RANDOM%500)+1))
+                    echo $ballNbrs >> ~/c237TT/$1;
+                    sleep 0.1
+                    done
+                elif  ls | grep $1 > null
+                then
+                echo  "Error:The file" $1 "does  exist " "code="$error;
+                fi
+
