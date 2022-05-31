@@ -1,0 +1,24 @@
+#!/bin/bash
+i=0
+          count=0
+          counter=$((count-3))
+          if  ! locate ~/c237TT/FixGen/logs
+          then
+              echo "The folder logs does not exists" >> ACTIVITY15.log
+              mkdir ~/c237TT/FixGen;
+              mkdir ~/c237TT/FixGen/logs;
+          elif locate ~/c237TT/FixGen/logs
+            then
+              echo "The folder logs does  exists" >> ACTIVITY15.log
+              (cd ~/c237TT/FixGen/logs; ~/fixGenerator.sh && [1])
+              echo "We are running the script fixGenerator.sh" >> ACTIVITY15.log
+          fi
+          count=$(ls ~/*.log -tr | wc -l)
+          echo "Number of iles with .log is" $count >> ACTIVITY15.log
+          counter=$((count-3))
+          while  [ $i -lt $counter ]
+          do
+            i=$((i+1))
+            ls  ~/*.log -tr | head -n $i | tail -n 1;
+          done
+
