@@ -21,7 +21,7 @@ unset array
                         echo "Please enter a number in a range of 0 to 999";
                         fi
                 fi
-                if [ $i -eq "6" ] || [ $repeat == "true" ]
+                if [ $i -gt "6" ] || [ $repeat == "true" ]
                 then
                 echo "Do you want to stop?";
                 read answ
@@ -52,12 +52,12 @@ unset array
             sum=$((sum*$y))
             max=$(( $y > $max ? $y : $max ))
             min=$(( $y < $max ? $y : $max ))
-            echo "The total of multiplication is "$sum;
             tot=$((tot+$y))
             #avg=$(echo "scale=2;$tot/$ele" | bc 2>/dev/null)
             avg=$(bc <<< "scale=2; $tot/$ele")
-            echo "The total  is "$tot "and the average is ""$avg" "and the max is "$max "and the min is "$min;
-            echo "The numbers provided are " ${array[@]};
           done
+          echo "The total of multiplication is "$sum;
+          echo "The total  is "$tot "and the average is ""$avg" "and the max is "$max "and the min is "$min;
+          echo "The numbers provided are " ${array[@]};
           fi
 
