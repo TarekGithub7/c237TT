@@ -1,6 +1,8 @@
 #!/bin/bash
 repeat=false
 i=1
+var1=yes
+var2=no
 declare -a array
 unset array
         while [ $i -lt "11" ]
@@ -25,10 +27,10 @@ unset array
                 then
                 echo "Do you want to stop?";
                 read answ
-                        if [ $answ == "Yes" ] || [ $answ == "yes" ]
+                        if [ $answ == ${var1,,} ] || [ $answ == ${var1^^} ]
                         then
                         i=11
-                        elif [ $answ == "no" ] || [ $answ == "No" ]
+                      elif [ $answ == ${var2,,} ] || [ $answ == ${var2^^} ]
                         then
                         repeat="false"
                         elif [ $answ != "Yes" ] || [ $answ != "yes" ] ||
@@ -36,6 +38,7 @@ unset array
                         then
                         echo "Please enter Yes or No";
                         repeat="true"
+                        echo ${var1,,} ${var2,,}
                 fi
                 fi
         done
