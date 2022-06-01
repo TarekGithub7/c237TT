@@ -1,0 +1,72 @@
+#!/bin/bash
+
+rm -f ~/c237TT/ACTV17.csv;
+echo  "Client,Message type,stock,quantity,price,side,order id,last quantity,exec id,last price" > ~/c237TT/ACTV17.csv;
+cat ~/fixlog20220520034559.log | awk -F'[0-9][0-9][=]' '{print $4,$2,$7,$17,$14,$13,$11,$32,$17,$31}' | sed 's/;/,/g' | sed 's/ //g' >> ~/c237TT/ACTV17.csv;
+sleep 0.3
+cat ACTV17.csv | sed 's/\bA\b/Logon/g' >> ~/c237TT/ACTV17_0.csv;
+rm -f ACTV17.csv
+sleep 0.3
+cat ACTV17_0.csv | sed 's/\bB\b/News/g' >> ~/c237TT/ACTV17_1.csv;
+rm -f ACTV17_0.csv
+sleep 0.3
+cat ACTV17_1.csv | sed 's/\bC\b/Email/g' >> ~/c237TT/ACTV17_2.csv;
+rm -f ACTV17_1.csv
+sleep 0.3
+cat ACTV17_2.csv | sed 's/\bD\b/New Order Single/g' >> ~/c237TT/ACTV17_3.csv;
+rm -f ACTV17_2.csv
+sleep 0.3
+cat ACTV17_3.csv | sed 's/\bE\b/New Order List/g' >> ~/c237TT/ACTV17_4.csv;
+rm -f ACTV17_3.csv
+sleep 0.3
+cat ACTV17_4.csv | sed 's/\bF\b/Order Cancel Request/g' >> ~/c237TT/ACTV17_5.csv;
+rm -f ACTV17_4.csv
+sleep 0.3
+cat ACTV17_5.csv | sed 's/\bG\b/Order Cancel-Replace Request/g' >> ~/c237TT/ACTV17_6.csv;
+rm -f ACTV17_5.csv
+sleep 0.3
+cat ACTV17_6.csv | sed 's/\bH\b/Order Status Request/g' >> ~/c237TT/ACTV17_7.csv;
+rm -f ACTV17_6.csv
+sleep 0.3
+cat ACTV17_7.csv | sed 's/\bJ\b/Allocation/g' >> ~/c237TT/ACTV17_8.csv;
+rm -f ACTV17_7.csv
+sleep 0.3
+cat ACTV17_8.csv | sed 's/\bK\b/List Cancel Request/g' >> ~/c237TT/ACTV17_9.csv;
+rm -f ACTV17_8.csv
+sleep 0.3
+cat ACTV17_9.csv | sed 's/\bL\b/List Execute/g' >> ~/c237TT/ACTV17_10.csv;
+rm -f ACTV17_9.csv
+sleep 0.3
+cat ACTV17_10.csv | sed 's/\bM\b/List Status Request/g' >> ~/c237TT/ACTV17_11.csv;
+rm -f ACTV17_10.csv
+sleep 0.3
+cat ACTV17_11.csv | sed 's/\b0\b/HeartBeat/g' >> ~/c237TT/ACTV17_12.csv;
+rm -f ACTV17_11.csv
+sleep 0.3
+cat ACTV17_12.csv | sed 's/\b1\b/Test Request/g' >> ~/c237TT/ACTV17_13.csv;
+rm -f ACTV17_12.csv
+sleep 0.3
+cat ACTV17_13.csv | sed 's/\b2\b/Resend Request/g' >> ~/c237TT/ACTV17_14.csv;
+rm -f ACTV17_13.csv
+sleep 0.3
+cat ACTV17_14.csv | sed 's/\b3\b/Reject/g' >> ~/c237TT/ACTV17_15.csv;
+rm -f ACTV17_14.csv
+sleep 0.3
+cat ACTV17_15.csv | sed 's/\b4\b/Sequence Reset/g' >> ~/c237TT/ACTV17_16.csv;
+rm -f ACTV17_15.csv
+sleep 0.3
+cat ACTV17_16.csv | sed 's/\b5\b/Logout/g' >> ~/c237TT/ACTV17_17.csv;
+rm -f ACTV17_16.csv
+sleep 0.3
+cat ACTV17_17.csv | sed 's/\b6\b/Indication of Interest/g' >> ~/c237TT/ACTV17_18.csv;
+rm -f ACTV17_17.csv
+sleep 0.3
+cat ACTV17_18.csv | sed 's/\b7\b/Advertisement/g' >> ~/c237TT/ACTV17_19.csv;
+rm -f ACTV17_18.csv
+sleep 0.3
+cat ACTV17_19.csv | sed 's/\b8\b/Execution Report/g' >> ~/c237TT/ACTV17_20.csv;
+rm -f ACTV17_19.csv
+sleep 0.3
+cat ACTV17_20.csv | sed 's/\b9\b/Order Cancel Reject/g' >> ~/c237TT/ACTV17Final.csv;
+rm -f ACTV17_20.csv
+
