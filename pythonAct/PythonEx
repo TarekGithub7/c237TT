@@ -1,0 +1,58 @@
+p=0
+s=s.lower()
+t=t.lower()
+f=f.lower()
+i=0
+size=0
+type=0
+flavor=0
+while i == 0:
+    s=input("What size of coffee you want, we have small,medium and large")
+    if s == "small":
+        p=2
+        i=1
+        size="small"
+    elif  s == "medium":
+        p=3
+        i=1
+        size="medium"
+    elif s == "large":
+        p=4
+        i=1
+        size="large"
+    else:
+        print("Please choose a valid size ")
+while i == 1:
+    t=input("What type of coffee you want, we have brewed, espresso, and cold brew")
+    if t == "brewed":
+           p+=0
+           i=2
+           type="brewed"
+    elif  t == "espresso":
+           p+=0.5 
+           i=2 
+           type="espresso"
+    elif  t == "cold brew":
+           p+=1
+           i=2 
+           type="cold brew"
+    else:
+        print("Please choose a valid type")
+while i == 2:        
+    f=input("What type of flavor you want, we have hazelnut, vanilla, and caramel")
+    if   f == "hazelnut":
+          p+=0.5 
+          i=3
+          flavor="hazelnut"
+    elif f == "vanilla":
+          p+=0.5 
+          i=3
+          flavor="vanilla"
+    elif f == "caramel":
+          p+=0.5 
+          i=3
+          flavor="caramel"
+if i == 3:
+    print("You ordered a coffe with a size",size,"the type is",type,"the flavor is"
+          ,flavor,"with a price of ",p,)
+    
